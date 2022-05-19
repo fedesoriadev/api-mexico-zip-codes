@@ -13,10 +13,11 @@ class SettlementResource extends JsonResource
      * @param \Illuminate\Http\Request $request
      * @return array
      */
-    #[ArrayShape(['key'             => "mixed",
-                  'name'            => "mixed",
-                  'zone_type'       => "mixed",
-                  'settlement_type' => "mixed"
+    #[ArrayShape([
+        'key'             => "mixed",
+        'name'            => "mixed",
+        'zone_type'       => "mixed",
+        'settlement_type' => "mixed"
     ])] public function toArray($request): array
     {
         return [

@@ -50,10 +50,7 @@ class ImportZipCodes extends Command
         $reader->setHeaderOffset(1);
 
         $stmt = Statement::create()
-            ->offset(2)
-            //->offset(1518)
-            //->limit(15)
-        ;
+            ->offset(2);
         $records = $stmt->process($reader);
 
         $total = $records->count();

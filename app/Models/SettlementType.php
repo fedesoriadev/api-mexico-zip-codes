@@ -17,6 +17,9 @@ class SettlementType extends Model
         'name'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function settlements(): HasMany
     {
         return $this->hasMany(Settlement::class);

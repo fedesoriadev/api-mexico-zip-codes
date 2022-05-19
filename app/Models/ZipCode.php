@@ -23,6 +23,9 @@ class ZipCode extends Model
         'municipality_id'
     ];
 
+    /**
+     * @inheritdoc
+     */
     protected $with = [
         'federalEntity',
         'settlements',

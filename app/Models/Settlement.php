@@ -24,7 +24,7 @@ class Settlement extends Model
     ];
 
     /**
-     * @var string[]
+     * @inheritdoc
      */
     protected $with = ['settlementType'];
 
