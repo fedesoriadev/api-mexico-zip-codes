@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\FederalEntity;
+use App\Models\Municipality;
+use App\Models\SettlementType;
+use App\Models\ZipCode;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -24,9 +28,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->configureRateLimiting();
+
+        $this->configureModelBindings();
 
         $this->routes(function () {
             Route::middleware('api')
@@ -43,10 +49,29 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function configureRateLimiting()
+    protected function configureRateLimiting(): void
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+    }
+
+    protected function configureModelBindings(): void
+    {
+        Route::bind('zip_code', function (string $zipCode) {
+            return ZipCode::where('zip_code', $zipCode)->first();
+        });
+
+        Route::bind('federal_entity', function (string $federalEntity) {
+            return FederalEntity::where('name', strtoupper($federalEntity))->first();
+        });
+
+        Route::bind('municipality', function (string $municipality) {
+            return Municipality::where('name', strtoupper($municipality))->first();
+        });
+
+        Route::bind('settlement_type', function (string $settlementType) {
+            return SettlementType::where('name', ucfirst($settlementType))->first();
         });
     }
 }

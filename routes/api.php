@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/zip-codes', [ZipCodeController::class, 'index']);
-Route::get('/zip-codes/{zip_code:zip_code}', [ZipCodeController::class, 'show']);
+Route::get('/zip-codes/{zip_code}', [ZipCodeController::class, 'show']);
 
 Route::get('/federal-entities', [FederalEntityController::class, 'index']);
-Route::get('/federal-entities/{federal_entity:name}/zip-codes', [FederalEntityZipCodesController::class, 'index']);
+Route::get('/federal-entities/{federal_entity}/zip-codes', [FederalEntityZipCodesController::class, 'index']);
 
 Route::get('/municipalities', [MunicipalityController::class, 'index']);
-Route::get('/municipalities/{municipality:name}/zip-codes', [MunicipalityZipCodesController::class, 'index']);
+Route::get('/municipalities/{municipality}/zip-codes', [MunicipalityZipCodesController::class, 'index']);
 
 Route::get('/settlement-types', [SettlementTypeController::class, 'index']);
-Route::get('/settlement-types/{settlement_type:name}/zip-codes', [SettlementTypeZipCodesController::class, 'index']);
+Route::get('/settlement-types/{settlement_type}/zip-codes', [SettlementTypeZipCodesController::class, 'index']);
