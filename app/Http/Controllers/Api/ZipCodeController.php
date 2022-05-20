@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ZipCodeCollection;
 use App\Http\Resources\ZipCodeResource;
 use App\Models\ZipCode;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ZipCodeController extends Controller
 {
     /**
-     * @return \App\Http\Resources\ZipCodeCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(): ZipCodeCollection
+    public function index(): AnonymousResourceCollection
     {
-        return new ZipCodeCollection(ZipCode::paginate());
+        return ZipCodeResource::collection(ZipCode::paginate());
     }
 
     /**

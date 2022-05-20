@@ -3,26 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SettlementTypeCollection;
 use App\Http\Resources\SettlementTypeResource;
 use App\Models\SettlementType;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class SettlementTypeController extends Controller
 {
     /**
-     * @return \App\Http\Resources\SettlementTypeCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(): SettlementTypeCollection
+    public function index(): AnonymousResourceCollection
     {
-        return new SettlementTypeCollection(SettlementType::paginate());
-    }
-
-    /**
-     * @param \App\Models\SettlementType $settlementType
-     * @return \App\Http\Resources\SettlementTypeResource
-     */
-    public function show(SettlementType $settlementType): SettlementTypeResource
-    {
-        return new SettlementTypeResource($settlementType);
+        return SettlementTypeResource::collection(SettlementType::all());
     }
 }

@@ -3,26 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\MunicipalityCollection;
 use App\Http\Resources\MunicipalityResource;
 use App\Models\Municipality;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class MunicipalityController extends Controller
 {
     /**
-     * @return \App\Http\Resources\MunicipalityCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(): MunicipalityCollection
+    public function index(): AnonymousResourceCollection
     {
-        return new MunicipalityCollection(Municipality::paginate());
-    }
-
-    /**
-     * @param \App\Models\Municipality $municipality
-     * @return \App\Http\Resources\MunicipalityResource
-     */
-    public function show(Municipality $municipality): MunicipalityResource
-    {
-        return new MunicipalityResource($municipality);
+        return MunicipalityResource::collection(Municipality::all());
     }
 }
