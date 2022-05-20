@@ -16,7 +16,6 @@ class SettlementTypeResource extends JsonResource
     #[ArrayShape(['name' => "mixed"])] public function toArray($request): array
     {
         return [
-            'id' => $this->id,
             'name' => $this->name
         ];
     }

@@ -26,7 +26,7 @@
 
 ## Instalation
 All the zip codes has been imported to `database/demo.db`. 
-_Feel free to follow [these instructions](#Import-zip-codes-from-a-CSV/TXT) to swap database and/or use the CSV/TXT importer to load new zip codes._
+_Feel free to follow [these instructions](#import-zip-codes-from-a-CSV/TXT) to swap database and/or use the CSV/TXT importer to load new zip codes._
 
 #### TL;DR
 
